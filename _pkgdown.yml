@@ -1,4 +1,24 @@
 url: https://bailliem.github.io/msdesign/
+
 template:
   bootstrap: 5
+  bootswatch: simplex
+  bslib:
+    primary: "#3c523c"
+    base_font: {google: "Atkinson Hyperlegible"}
+    heading_font: {google: "Atkinson Hyperlegible"}
+    text-muted: "#FFFFFF"
 
+authors:
+  Mark Baillie:
+    href: "https://graphicsprinciples.github.io/"
+
+development:
+  mode: auto
+  version_label: default
+
+navbar:
+  bg: primary
+  structure:
+    left:  [intro, reference, articles, tutorials, news]
+    right: [search, github]
