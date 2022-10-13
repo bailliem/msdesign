@@ -2,25 +2,45 @@
 % Please edit documentation in R/examine.R
 \name{examine}
 \alias{examine}
-\title{Examine the design}
+\title{examine: Examines power, Type S, and Type M error for a given design}
 \usage{
-examine(effect = 1, se = 1, df = 1, n = 100)
+examine(
+  effect_size,
+  standard_error,
+  alpha = 0.05,
+  df = Inf,
+  number_simulations = 10
+)
 }
 \arguments{
-\item{effect}{assumed effect size. Numeric value.}
+\item{effect_size}{a numeric or list containing an estimate(s) of the "true"
+effect size.}
 
-\item{se}{assume standard error. Positive, numeric value.}
+\item{standard_error}{a numeric, standard error of the estimate}
 
-\item{df}{degrees of freedom.}
+\item{alpha}{a numeric, the statistical significance threshold}
 
-\item{n}{Number of simulated trials.}
+\item{df}{a numeric, the degrees of freedom. df=Inf is equivalent
+to a normal distribution.}
+
+\item{number_simulations}{a numeric, how many times to simulate when calculating Type M
+error.}
 }
 \value{
-statistics
+either a list of length 3 containing the power, type s, and type M
+error, or if A is a list, a df that is 4 by length(A), with an effect size
+and it's corresponding power, type s, and type m errors in each row.
 }
 \description{
-Examine the design
+Calculates Power, Type S, and Type M error and returns them in a list or
+df, depending on whether a single true effect size or range is provided.
+retro_design() is faster as it uses the closed form solution from Lu et al.
+(2018), but this function can be used for t distributions, whereas
+retro_design() cannot. Function originally provided in Gelman and
+Carlin (2014), reused with permission.
 }
 \examples{
-examine(1, 1, 1, 1)
+examine(1,3.28)
+examine(list(.2,2,20),8.1)
+examine(.5,1,df=10)
 }
